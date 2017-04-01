@@ -1,0 +1,11 @@
+global.js
+
+主要用于设置CSS样式
+
+public.js
+
+实现页面动态效果
+
+connect文件夹的connect.php
+
+用于后台数据库的操作

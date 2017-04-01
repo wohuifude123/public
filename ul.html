@@ -1,0 +1,105 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<script type="text/javascript" src="js/global.js"></script>
+<script type="text/javascript" src="js/public.js"></script>
+<style>
+*{
+	margin:0;
+	padding:0;
+}
+
+#da{
+
+}
+#dd li{
+
+}
+#dd li:first-child{
+
+
+}
+</style>
+</head>
+
+<body>
+
+<div id="dd">
+
+
+
+</div>
+
+
+<script>
+var ul_c = {
+	div:"dd",
+	id:"da",
+	style:{listStyle:"none",width:"120px",backgroundColor:"#0C3",height:"100px"},
+	li:3,
+	li_style:{float:"left",width:"30px",height:"30px",backgroundColor:"#039",textAlign:"center",marginLeft:"10px"},
+	content:[
+		{content:"kit"},
+		{content:"ony"},
+		{content:"ton"}
+	]
+}
+var hrefs = ['#a','#b','#c'];//链接数组
+var ids = ['aaa','bbb',"ccc"];//id数组
+
+
+ul(ul_c);
+/*
+function ul(ul_c)
+{
+	var ul = document.createElement('ul');
+	//alert(ul_c["li_style"].float);
+	//ul.setAttribute("id","da");
+	ul.id=ul_c["id"];
+	
+	for(var i=0;i<ul_c["li"];i++){
+		var li = document.createElement('li');
+		var a = document.createElement('a');
+		a.setAttribute('href',hrefs[i]);
+		a.id = ids[i];
+		//alert(ul_c["content"][i].content+"#"+ul_c["content"].length);
+		a.innerHTML = ul_c["content"][i].content;
+		
+		li.appendChild(a);
+		ul.appendChild(li);
+	}
+	
+	$(ul_c["div"]).appendChild(ul);
+	for(var style_c in ul_c["style"])
+	{
+		//alert(style_c);
+		//alert(ul_c["style"][style_c]);
+		//alert(document.getElementById("da"));
+		$(ul_c["id"]).style[style_c]=ul_c["style"][style_c];
+	}
+	for(var li_style in ul_c["li_style"])
+	{
+		var li=document.getElementsByTagName("li");
+		for(var i=0;i<li.length;i++)
+		{
+			document.getElementsByTagName("li")[i].style[li_style]=ul_c["li_style"][li_style];
+		}
+		//alert(li_style+"#"+ul_c["li_style"][li_style]);
+	}
+
+	//$("da").style.width="100px";
+	//$("da").style.height="100px";
+	//$("da").style.backgroundColor="#0C3";
+	//$("da").style.listStyle="circle";
+	//$("da").style.textAlign="center";
+	
+	
+}
+*/
+
+	
+</script>
+</body>
+</html>

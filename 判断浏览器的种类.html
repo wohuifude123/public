@@ -1,0 +1,107 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset=" utf-8">
+<meta name="author" content="http://www.softwhy.com/" />
+<title>蚂蚁部落</title>
+<script type="text/javascript" src="js/public.js"></script>
+</head>
+<body>
+<script type="text/javascript">
+
+//var re = /[0-9]{3,}/;
+
+var r ="[0-9]{3,}";
+var re = new RegExp(r);
+
+var str="123456";
+
+var jg=re.exec(str);
+//alert(jg);//结果123456
+
+</script>
+
+
+
+<div id="browser"></div>
+
+<script type="text/javascript">
+/*
+var ab={//所有浏览器的正则
+	rMsie:"(msie\\s|trident.*rv:)([\\w.]+)",
+	rFirefox:"(firefox)\\/([\\w.]+)"
+	
+	 
+	//rOpera:"/(opera).+version\/([\w.]+)/",   
+	//rChrome:"/(chrome)\/([\w.]+)/",   
+	//rSafari:"/version\/([\w.]+).*(safari)/"
+	
+}
+*/
+
+  
+//var ua = userAgent.toLowerCase(); 
+
+//判断浏览器的种类
+/*
+function uaMatch(ua){
+	var re = null;
+	var mat = null;
+	for(var u in ab)
+	{
+		//alert(ab[u]);
+		switch (u)
+		{
+			//IE浏览器
+			case "rMsie":
+				re = new RegExp(ab[u]);
+				mat = re.exec(ua);
+				if(mat != null)
+				{
+					document.getElementById("browser").innerHTML="IE"+mat[2];
+					document.getElementById("browser").style["color"]="green";
+					return { browser : "IE", version : mat[2] || "0" };  
+				}
+			break;
+			//火狐浏览器
+			case "rFirefox":
+				//alert(ab[u]);
+	
+				re = new RegExp(ab[u]);
+				mat = re.exec(ua);
+				//alert("mat=="+mat);
+				if(mat != null)
+				{
+					
+					document.getElementById("browser").innerHTML="争取获取了浏览器=="+mat[1]+mat[2];
+					document.getElementById("browser").style["color"]="red";
+					return { browser : mat[1] || "", version : mat[2] || "0" };    
+				}
+			break;
+			//缺省情况
+			default:
+				dom = document.getElementsByTagName(dom);
+			break;
+		}
+	};
+
+
+} 
+*/
+
+var userAgent = navigator.userAgent;
+var browser;  
+var version;
+var browserMatch = uaMatch(userAgent.toLowerCase());
+if (browserMatch.browser){  
+  browser = browserMatch.browser;  
+  version = browserMatch.version;  
+}
+alert(browser+version);
+</script>
+
+
+
+ 
+</body>
+</html>

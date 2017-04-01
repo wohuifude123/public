@@ -1,0 +1,398 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>动态二级目录</title>
+
+<style>
+*{  
+    margin:0px;  
+    padding:0px;  
+}
+
+#entirety{
+	width:1200px;
+	background-color:#0F0;
+	margin:0 auto;
+}
+
+#ca{
+	list-style:none;
+}
+
+#top{
+	background-color:#33F;
+	width:1200px;
+	height:160px;
+}
+
+#content{
+	background-color:#3FF;
+	width:1200px;
+	height:500px;
+}
+
+#left{
+	background-color:#096;
+	width:200px;
+	height:500px;
+	float:left;
+}
+#right{
+	background-color:#0CF;
+	width:1000px;
+	height:500px;
+	float:left;
+}
+
+.cc{
+	text-align:center;
+	background-color:#909;
+	border-style:solid;
+	border-width:1px;
+	font-size:23px;
+}
+
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div id="entirety">
+
+    <div id="top">
+    <img src="img/new banner.jpg" width="1200" height="160" /> </div>
+    
+    <div id="content">
+
+        <div id="left">
+        
+        <ul id="ca">
+        <li class="cc">大英免修申请</li>
+        <li class="cc">考试报名</li>
+        <li class="cc">学生信息</li>
+        <li class="cc">排课查询</li>
+        <li class="cc">选课信息</li>
+        <li class="cc">考试安排查询</li>
+        <li class="cc">学生成绩</li>
+        <li class="cc" id="hello">学生学业警告查询</li>
+        <li class="cc">大类分专业</li>
+        <li class="cc">学生评价</li>
+        </ul>
+        </div>
+
+        <div id="right" style="text-align:center">
+        aaaaa
+        </div>
+    
+    </div>
+
+</div>
+
+<script type="text/javascript">
+function cleanWhiteSpace(element) 
+{ 
+	for(var i=0; i<element.childNodes.length; i++) 
+	{ 
+		var node = element.childNodes[i];
+		// \s 匹配任意的空白符
+		// \S 匹配任意不是空白符的
+		if(node.nodeType == 3 && !/\S/.test(node.nodeValue)) 
+		{
+			//alert("空白节点清除"+i);
+			node.parentNode.removeChild(node); 
+		} 
+	} 
+} 
+
+
+cleanWhiteSpace(document.getElementById("ca"))
+
+//数据层
+var tree = {
+			"a0": {
+                "id": 0,
+                "name": "a0",
+                "children": {
+                    "b1": {
+						"cname":"大一免修申请",
+						"href":"https://www.baidu.com/"
+					},
+                    "b2":  "大二免修申请",
+                    "b3": {
+						"cname":"大三免修申请",
+						"href":"https://www.baidu.com/"
+					}
+                }
+            },
+            "a1": {
+                "id": 1,
+                "name": "a1",
+                "children": {
+                    "b1": "个人缴费",
+                    "b2": "学生考试报名",
+                    "b3": "学生重考报名"
+                }   
+            },
+            "a2": {
+                "id": 2,
+                "name": "a2",
+                "children": {
+					"b1": "我的个人课表",
+                    "b2": "我的基本信息",
+                    "b3": "培养方案查询"
+				}
+            },
+            "a3": {
+                "id": 3,
+                "name": "a3",
+                "children": {
+                    "b1": "课程安排查询"
+                }
+            },
+			"a6": {
+                "id": 6,
+                "name": "a6",
+                "children": {
+                    "b1": {
+						"cname":"总成绩查询",
+						"href":"javascript:Foo()"
+					},
+                    "b2":{
+						"cname":"不及格成绩查询",
+						"href":"https://www.baidu.com/"
+					},
+                    "b3": "选修成绩查询"
+                }
+            },
+			 "a7": {
+                "id": 7,
+                "name": "a7",
+                "children": {
+                }
+            }
+        };
+//视图层
+create("cc",tree);
+
+//控制层
+function create(cn,tree)
+{
+
+	//闭包
+	//var obj_lis = document.getElementById("ca").getElementsByTagName("li");
+	var obj_lis =getElementsClass(cn);
+	for(var i=0;i<obj_lis.length;i++)
+	{
+		
+		//obj_lis[i].onclick = createNodeList;
+		(function(i) {
+			obj_lis[i].onclick = function(event)
+			{
+				event = event || window.event;
+				var target = event.target || event.srcElement;
+				if (target == this)
+				createNodeList(cn,i,tree);
+			};
+		})(i);
+    }
+}
+
+
+
+function createNodeList(cn,num,tree){
+	//alert(a);
+	
+	var bc =getElementsClass(cn)[num].childNodes;
+	var str=getElementsClass(cn)[num].innerHTML;
+	//判断节点是否存在
+	//alert(str);
+	var re = /ul/i;
+	var r = str.match(re);
+	//alert(r);
+	//if(str.indexOf("<ul>")>=0)
+	if(r=="ul")
+	{
+		if(bc[1].innerHTML !=  null)
+		{
+			if(bc[1].style.display=="")
+			{
+				bc[1].parentNode.removeChild(bc[1]); 
+				return;
+			}
+		}
+
+	}
+	/*
+	if(bc[1].innerHTML ==  null)
+	{
+		alert("空白");
+	}
+	*/
+	var n = document.createElement("ul"),
+            docfrag = document.createDocumentFragment();//创建文档碎片节点
+	n.style.listStyle="none";
+	for(var key in tree)
+	{
+		if(tree[key].id==num)
+		{
+			//alert(tree[key].name)
+			for( var item_t in tree[key].children)
+			{
+				var c = document.createElement("li"),
+					span = document.createElement("a");
+					c.style.textAlign="center";
+					c.style.fontSize="18px";
+					//c.style.borderStyle="solid";
+					//c.style.borderWidth="1px";
+					c.style.color="#993";
+					//alert(tree[key].children[item_t]+"长度"+getJsonLength(tree[key].children[item_t]));
+					//长度
+					var JsonLength=getJsonLength(tree[key].children[item_t]);
+					if(JsonLength!=1)
+					{
+						var children_f = tree[key].children[item_t];
+						for( var item_f in children_f)
+						{
+							if(item_f == "href")
+							{
+								//alert(item_f);
+								span[item_f]=children_f[item_f];
+							}
+							else
+							{
+								span.appendChild(document.createTextNode( children_f[item_f] ));
+							}
+						}
+						
+						//span.target="new";
+					}
+					else
+					{
+						span.appendChild(document.createTextNode( tree[key].children[item_t] ));
+						span.onclick= function()
+						{
+							//alert("成功");
+							//stopBubble(this);
+						}
+					}
+
+				c.appendChild(span);
+				docfrag.appendChild( c );
+				n.appendChild( docfrag );
+				getElementsClass(cn)[num].appendChild(n);
+				var b =getElementsClass(cn)[num].childNodes;
+				var exist =getElementsClass(cn)[0].getAttribute("exist");
+				if(exist == null)
+				{
+					//alert("没有定义属性");
+				}
+				else
+				{
+					//alert("存在"+exist);
+				}
+				//alert("exist=="+exist);
+				getElementsClass("cc")[0].setAttribute("exist","1");
+				/*
+				alert(b[1].nodeName);
+				alert(b[1].nodeType);
+				alert(b[1].nodeValue);
+				alert(b[1].innerHTML);
+				
+				alert(b[1].childNodes[0].nodeName);
+				alert(b[1].childNodes[0].nodeType);
+				alert(b[1].childNodes[0].nodeValue);
+				alert(b[1].childNodes[0].innerHTML);
+				*/
+			}
+		}	
+	}
+
+}
+
+function getElementsClass(classnames)
+{
+	var classobj= new Array();//定义数组 
+	var classint=0;//定义数组的下标 
+	var tags=document.getElementsByTagName("*");//获取HTML的所有标签 
+	for(var i in tags)
+	{//对标签进行遍历
+		if(tags[i].nodeType==1)
+		{//判断节点类型
+			if(tags[i].getAttribute("class") == classnames)//判断和需要CLASS名字相同的，并组成一个数组 
+			{
+				classobj[classint]=tags[i];
+				classint++;
+			}
+		}
+	}
+	return classobj;//返回组成的数组
+}
+//阻止元素继承
+function stopBubble(e)
+{
+	alert(e);
+	if (e && e.stopPropagation)
+	{//非IE浏览器 
+		e.stopPropagation(); 
+	} 
+	else
+	{//IE浏览器 
+		window.event.cancelBubble = true; 
+	} 
+}
+//获取JSON长度
+function getJsonLength(jsonObj) {
+        var Length = 0;
+		//alert(typeof(jsonObj)=="string");
+		if(typeof(jsonObj)=="string") return 1;
+        for (var item in jsonObj) {
+            Length++;
+        }
+        return Length;
+}
+
+
+
+function pay()
+{
+	
+	  $_a.ajax_L({
+		  
+        url:'csa.php',           //请求地址
+        type: "POST",                       //请求方式
+        data: { name: "super", age: 20 },        //请求参数
+        dataType: "json",
+		success: function (response, xml) {
+            // 此处放成功后执行的代码
+			document.getElementById("right").innerHTML=response;
+        },
+        fail: function (status) {
+            // 此处放失败后执行的代码
+        }
+    });
+}
+
+function det(){
+	document.getElementById("hello").onclick = pay;
+}
+det();
+function a()
+{
+	alert("a1a");
+}
+function Foo() 
+{
+	alert("a1a");
+} 
+</script>
+
+
+
+</body>
+</html>

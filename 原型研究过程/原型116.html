@@ -1,0 +1,180 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+</head>
+
+<body>
+
+<script type="text/javascript">
+/*
+function Foo() {
+    this.value = 42;
+}
+Foo.prototype = {
+    method: function() {
+		alert("Foo");
+	}
+};
+
+function Bar() {}
+
+// 设置Bar的prototype属性为Foo的实例对象
+Bar.prototype = new Foo();
+Bar.prototype.foo = 'Hello World';
+
+// 修正Bar.prototype.constructor为Bar本身
+Bar.prototype.constructor = Bar;
+
+var test = new Bar() // 创建Bar的一个新实例
+//alert(test.method());
+//alert(test.value);
+//alert(test.foo);
+*/
+
+/*
+上面的例子中，test 对象从 Bar.prototype 和 Foo.prototype 继承下来；因此，它能访问 Foo 的原型方法 method。
+同时，它也能够访问那个定义在原型上的 Foo 实例属性 value。需要注意的是 new Bar() 不会创造出一个新的 Foo 实例，而是重复使用它原型上的那个实例；
+因此，所有的 Bar 实例都会共享相同的 value 属性。
+*/
+
+// 字符串：String()
+var str = "张三";
+document.write(str.constructor+"<br/>");
+document.writeln(str.constructor === String); // true
+
+function Person(name){
+                this.name=name;
+            }
+            
+            Person.prototype.share=[];
+            
+            Person.prototype.printName=function(){
+                alert(this.name);
+            }
+            
+            var person1=new Person('Byron');
+            var person2=new Person('Frank');
+            
+            person1.share.push(5);
+            person2.share.push(8);
+			//alert(person1.share[0]);
+			//person1.printName();
+			
+/*		
+var base = {  
+    name : "base",  
+    getInfo : function(){  
+       return this.name;  
+    }  
+}  
+    
+var ext1 = {  
+    id : 0,  
+    __proto__ : base  
+}  
+    
+var ext2 = {  
+    id : 9,  
+    __proto__ : base  
+}  
+
+   
+alert(ext1.id);  
+alert(ext1.getInfo());  
+alert(ext2.id);  
+alert(ext2.getInfo());  
+*/
+
+
+/*
+//两种定义函数方式
+//aaa();
+//这样调用就会出错
+var aaa = function(){
+	alert("A");   
+}
+aaa();
+//这样就不会出错   
+               
+//先调用后声明   
+bbb();   
+function bbb(){
+	alert("bb");
+}
+*/
+
+/*
+//原型使用方式1
+ var Calculator = function (decimalDigits, tax) {
+            this.decimalDigits = decimalDigits;
+            this.tax = tax;
+        };
+    Calculator.prototype = {
+            add: function (x, y) {
+                return x + y;
+            },
+
+            subtract: function (x, y) {
+                return x - y;
+            }
+        };
+alert((new Calculator()).add(1, 5));
+*/
+
+//原型使用方式2
+
+ var Calculator = function (decimalDigits, tax) {
+            this.decimalDigits = decimalDigits;
+            this.tax = tax;
+        };
+ Calculator.prototype = function () {
+            add = function (x, y) {
+                return x + y;
+            },
+
+            subtract = function (x, y) {
+                return x - y;
+            }
+            return {
+                add: add,
+                subtract: subtract
+            }
+        } ();
+
+alert((new Calculator()).add(9, 3));
+
+var BaseCalculator = function() {
+    this.decimalDigits = 2;
+};
+
+BaseCalculator.prototype = {
+	innerHTML :"开始",
+    add: function(x, y) {
+        return x + y;
+    },
+    subtract: function(x, y) {
+        return x - y;
+    },
+	zo:function(){
+		return {a:'a1',b:'b1'};
+	}
+};
+
+
+var Base = new BaseCalculator();
+//alert((new BaseCalculator()).decimalDigits);
+//alert("Digits ="+Base.decimalDigits);
+//alert(Base.add(5,1));
+var zo  = Base.zo();
+alert(Base.innerHTML);
+alert(zo.a);
+zo.c="TEST";
+alert(zo.c);
+zo["c"]="00123";
+alert(zo.c);
+
+</script>
+</body>
+</html>

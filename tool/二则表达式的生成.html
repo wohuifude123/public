@@ -1,0 +1,116 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+</head>
+
+<body>
+
+<div id="div1">
+根据输入的内容：<input name="" type="text" id="input1" value=""/><input name="" type="button" value="生成" onclick="create()"/>
+</div>
+<div id="div2" style="margin-top:30px;">
+生成正则表达式：<input name="" id="input2" type="text" style="width:500px;"/>
+</div>
+<div id="div3" style="margin-top:30px;">
+人工智能查询开始
+</div>
+
+<script type="text/javascript">
+//字符转换变量
+/*
+var c01= 123
+var a ="c0";
+alert(a);
+a+=1;
+alert(a);
+alert(eval(a));
+*/
+
+function create()
+{
+	var div3 = document.getElementById("div3");
+
+	var inputValue_01 = document.getElementById("input1").value;
+	var input02 = document.getElementById("input2");
+	input02.setAttribute("value","");//因为没有这个属性，所以需要新建一个属性
+	var regular = true;
+	var index = 0;
+	//数字
+	var regular000 = new RegExp("^[0-9]*$");
+	//电子邮箱
+	var regular001 = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(.[a-zA-Z0-9_-])+/;
+	//由数字和26个英文字母组成的字符串
+	var regular002 = new RegExp("^[A-Za-z0-9]+$");
+	/*
+		检测
+	*/　　 
+	while(regular)
+	{
+		regular = "regular00"+index;
+		//alert(regular);
+		//alert(typeof(regular).toString);
+		try{
+			eval(regular)
+		}catch(err){
+			//alert("错误");
+			input02.value="错误";
+			break;
+		}
+		//alert(eval(regular).toString);
+		var er =eval(regular);
+		if(er.test(inputValue_01))
+		{
+			//alert("已经");
+			input02.value=er;
+			break;
+		}
+		index++;
+	}
+	//最后显示文字
+	switch(index)
+	{
+		case 0:
+			div3.innerHTML="数字";
+		break;
+		case 1:
+			div3.innerHTML="邮箱";
+		break;
+		case 2:
+			div3.innerHTML="由数字和26个英文字母组成的字符串";
+		break;
+		default:
+			div3.innerHTML="抱歉没有找到";
+		break;
+	}
+
+	
+
+	//alert(inputValue_01);
+	var email = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(.[a-zA-Z0-9_-])+/;//电子邮箱正则
+	//alert(email.test(inputValue_01));
+	//var reg = new RegExp("^[0-9]*$");//数字
+	//alert(reg.test(inputValue_01));
+	
+	/*
+	if(reg.test(inputValue_01))
+	{ 
+		//alert("数字");
+		input02.value = "^[0-9]*$";
+	}
+	else if(email.test(inputValue_01))
+	{
+		input02.value=/^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(.[a-zA-Z0-9_-])+/;
+	}
+	else
+	{
+		alert("没有合适正则");
+	}
+	*/
+
+}
+</script>
+
+</body>
+</html>

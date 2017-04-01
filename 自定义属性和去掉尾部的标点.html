@@ -1,0 +1,72 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<script type="text/javascript" src="js/public.js"></script>
+<style type="text/css">
+#a1{
+	
+}
+</style>
+
+
+</head>
+
+<body>
+
+<div id="a1" data="bg|height|width">111</div>
+
+<script type="text/javascript">
+/*
+function data(id){
+	var data = document.getElementById(id).getAttribute("data");
+	//alert(data);
+	var ar = new Array();//记录位置
+	//var index =data.indexOf("|");
+	for(var i=0,d=0,k; i<data.length; i++) {
+		k = data.charAt(i);
+		//alert(k);
+		if(k=="|"){
+			ar.push(i);
+			//alert("d=="+d);
+			d++;
+		}
+	}
+	var arc=new Array();//存放自定义的属性
+	for(var i_1=0,char=0; i_1<ar.length; i_1++) {
+		//alert(ar[i_1]);
+		var char_d=data.substring(char,ar[i_1]);
+		//alert(char_d);
+		arc.push(char_d);
+		char=ar[i_1]+1;
+		}
+	arc.push(data.substring(ar[ar.length-1]+1,data.length));//获取最后一个自定义的属性
+	
+	for(var i_c=0; i_c<arc.length; i_c++) {
+		//alert(arc[i_c]);
+		if(arc[i_c]="bg"){
+			document.getElementById(id).style["backgroundColor"]="red";
+		}
+		if(arc[i_c]="height"){
+			document.getElementById(id).style["height"]="100px";
+		}
+		if(arc[i_c]="width"){
+			document.getElementById(id).style["width"]="500px";
+		}
+	}
+}
+*/
+data("a1");
+
+var arl = new Array();
+arl[0]="a";
+arl[1]="b";
+arl[2]="c";
+var al=arl.join("#");
+alert(al.substring(0,al.length-1));
+</script>
+
+
+</body>
+</html>

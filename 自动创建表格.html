@@ -1,0 +1,117 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<script type="text/javascript" src="js/public.js"></script>
+</head>
+
+<body>
+
+<div id="table">
+
+<table >
+</table>
+
+</div>
+
+<script type="text/javascript">
+var table={
+	tr:3,td:5,
+	content:
+	[
+		{td:"王子1"},{td:"公主4"},{td:"公主7"},{td:"王子10"},{td:"王子13"},
+		{td:"王子2"},{td:"公主5"},{td:"公主8"},{td:"王子11"},{td:"王子14"},
+		{td:"王子3"},{td:"公主6"},{td:"公主9"},{td:"王子12"},{td:"王子15"}
+	],
+	border:2,
+	td_style:"red",
+	td_border:"solid"
+	
+}
+
+autoTable("table",table);
+/*
+//自动创建表格
+function autoTable(id,table){
+	var tr_l;//行数
+	var td_l;//列数
+	//alert(table.content.length);
+	var td_style;//列的样式
+	var table_c=document.createElement("table");
+	
+	for(var t in table)
+	{
+		//alert(t);
+		//alert(table[t]);
+		switch(t){
+			case "tr":
+				tr_l=table[t];
+			break;
+			case "td":
+				td_l=table[t];
+			break;
+			case "border":
+				table_c.style["border"]=table[t]+"px solid" ;
+				//alert(table_c.style.border);
+			break;
+			case "td_style":
+				td_style=table[t];
+			break;
+			
+			default:
+			
+			break;
+		}
+		 
+		
+	}
+	
+	var content = new Array();
+	
+	for(var i_x=0;i_x<tr_l;i_x++){
+		content[i_x]=new Array(); //声明二维，每一个一维数组里面的一个元素都是一个数组；
+		for(var i_y=0;i_y<td_l;i_y++){
+			content[i_x][i_y]=i_x*i_y;
+			//alert(i_x+"#"+i_y);
+		}
+	}
+	
+	var i_x_c=0,i_y_c=0;
+	for(var i_content=0;i_content<table.content.length;i_content++)
+	{
+		//alert(table.content[i_content].td);
+
+		content[i_x_c][i_y_c]=table.content[i_content].td;
+		//alert("content=="+i_x_c+"#"+i_y_c);
+		i_y_c++;
+		if(i_y_c>=td_l)
+		{
+			i_x_c++
+			i_y_c=0;
+		}
+
+
+	}
+	//alert(content[2]);
+	
+	//循环创建内容
+	for(var i=0;i<tr_l;i++)
+	{
+		var tr_c=document.createElement("tr");
+		for(var j=0;j<td_l;j++)
+		{
+			var td_c=document.createElement("td");
+			td_c.style.color=td_style;
+			td_c.innerHTML=content[i][j];
+			tr_c.appendChild(td_c);
+		}
+		table_c.appendChild(tr_c);
+	}
+	document.getElementById(id).appendChild(table_c);
+
+}
+*/
+</script>
+</body>
+</html>

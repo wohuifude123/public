@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<script type="text/javascript" src="js/public.js"></script>
+</head>
+
+<body>
+<div id="divdc" style="width:1000px; height:1500px; background-color:#F00;"></div>
+<script>
+window.onscroll = function (){
+	var Mic = MicCase;
+	if (Mic.getScrollTop() + Mic.getClientHeight() == Mic.getScrollHeight())
+	{
+		var xmlHttpReq = null; 
+		//IE浏览器使用ActiveX 
+		if (window.ActiveXObject){
+			xmlHttpReq = new ActiveXObject("Microsoft.XMLHTTP");
+		}
+		//其它浏览器使用window的子对象XMLHttpRequest
+		else if (window.XMLHttpRequest) {
+			xmlHttpReq = new XMLHttpRequest();
+		}
+		if (xmlHttpReq != null)
+		{
+			xmlHttpReq.open('post','http://localhost:9096/dao/ajax/domain/trundle.php',true);
+			//设置回调，当请求的状态发生变化时，就会被调用，传递参数xmlHttpReq 
+			xmlHttpReq.onreadystatechange = function () { onajaxtest(xmlHttpReq); };
+			//提交请求
+			xmlHttpReq.send(null);
+		}
+	}
+	else
+	{
+		
+	}
+	
+} 
+
+function onajaxtest(req) { 
+	var newnode = document.createElement("a"); 
+	newnode.setAttribute("href", "#"); 
+	newnode.innerHTML = req.readyState + " " + req.status + " " + req.responseText; 
+	document.body.appendChild(newnode); 
+	var newline = document.createElement("br"); 
+	document.body.appendChild(newline); 
+} 
+</script>
+</body>
+</html>

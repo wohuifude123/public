@@ -1,0 +1,132 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<script type="text/javascript" src="js/public.js"></script>
+</head>
+
+<body>
+
+<div id="div01" style="width:1000px; height:300px; background-color:#0FF"></div>
+<div id="div02" style="width:1000px; height:800px; background-color:#009"></div>
+
+<script>
+/*
+function aCase(){}
+aCase.prototype.test=function(){alert("aCase");}
+var ac = new aCase();
+ac.test();
+*/	
+/*
+//获取滚动条当前的位置 
+function getScrollTop()
+{ 
+	var scrollTop = 0; 
+	if (document.documentElement && document.documentElement.scrollTop)
+	{
+		scrollTop = document.documentElement.scrollTop;
+	}
+	else if (document.body)
+	{
+		scrollTop = document.body.scrollTop;
+	}
+	return scrollTop;
+}
+*/
+
+/*
+//获取当前可视范围的高度 
+function getClientHeight()
+{
+	var clientHeight = 0;
+	if (document.body.clientHeight && document.documentElement.clientHeight)
+	{
+		clientHeight = Math.min(document.body.clientHeight, document.documentElement.clientHeight);
+	}
+	else
+	{
+		clientHeight = Math.max(document.body.clientHeight, document.documentElement.clientHeight);
+	}
+	return clientHeight; 
+}
+*/
+
+/*
+//获取文档完整的高度 
+function getScrollHeight()
+{
+	return Math.max(document.body.scrollHeight, document.documentElement.scrollHeight); 
+}
+*/
+window.onscroll = function (){
+	
+	/*
+	if (getScrollTop() + getClientHeight() == getScrollHeight())
+	{
+		document.getElementById("div02").innerHTML="底部=="+getScrollHeight();
+		document.getElementById("div02").style.fontSize="200px";
+	}
+	else
+	{
+		document.getElementById("div02").innerHTML="";
+	}
+	*/
+	var Mic = MicCase;
+	/*
+	document.getElementById("div02").innerHTML="头部=="+Mic.getScrollTop()+"<br/>"
+		+"滚动=="+Mic.getClientHeight()+"<br/>"
+		+"总体=="+Mic.getScrollHeight();
+	*/
+	
+	if (Mic.getScrollTop() + Mic.getClientHeight() == Mic.getScrollHeight())
+	{
+		document.getElementById("div02").innerHTML="底部=="+Mic.getScrollHeight();
+		document.getElementById("div02").style.fontSize="200px";
+		var xmlHttpReq = null; 
+		//IE浏览器使用ActiveX 
+		if (window.ActiveXObject){
+			xmlHttpReq = new ActiveXObject("Microsoft.XMLHTTP");
+			document.getElementById("div02").innerHTML= document.getElementById("div02").innerHTML+"<br/>"
+				+"Microsoft.XMLHTTP";
+		}
+		//其它浏览器使用window的子对象XMLHttpRequest
+		else if (window.XMLHttpRequest) {
+			xmlHttpReq = new XMLHttpRequest();
+			document.getElementById("div02").innerHTML= document.getElementById("div02").innerHTML+"<br/>"
+				+"window.X";
+			
+		}
+		if (xmlHttpReq != null)
+		{
+			document.getElementById("div02").innerHTML= document.getElementById("div02").innerHTML+"<br/>"
+				+"xmlHttpReq001";
+			xmlHttpReq.open('post','http://localhost:9096/dao/ajax/domain/trundle.php',true);
+			//设置回调，当请求的状态发生变化时，就会被调用，传递参数xmlHttpReq 
+			xmlHttpReq.onreadystatechange = function () { onajaxtest(xmlHttpReq); };
+			//提交请求
+			document.getElementById("div02").innerHTML= document.getElementById("div02").innerHTML+"<br/>"
+				+"xmlHttpReq";
+			xmlHttpReq.send(null);
+		}
+	}
+	else
+	{
+		document.getElementById("div02").innerHTML="";
+		
+	}
+	
+} 
+
+function onajaxtest(req) { 
+	var newnode = document.createElement("a"); 
+	newnode.setAttribute("href", "#"); 
+	newnode.innerHTML = req.readyState + " " + req.status + " " + req.responseText; 
+	document.body.appendChild(newnode); 
+	var newline = document.createElement("br"); 
+	document.body.appendChild(newline); 
+} 
+</script> 
+
+</body>
+</html>

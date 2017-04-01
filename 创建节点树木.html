@@ -1,0 +1,100 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+</head>
+
+<body>
+<script type="text/javascript" src="js/public.js"></script>
+<script type="text/javascript">
+//[数据层]
+var tree = {
+            "id": 0,
+            "a1":{
+                "id": 1,
+                "name": "a1",
+                "children": {
+                    "b1": "b1_1",
+                    "b2": "b1_2",
+                    "b3": "b1_3"
+                }   
+            },
+            "a2": {
+                "id": 2,
+                "name": "a2",
+				"children": {
+					"b2": "b2_1",
+                }   
+            }
+}
+//[视图层]
+window.onload = function(){
+    var T = new Tree_m(tree);
+    document.getElementsByTagName("body")[0].appendChild(T);
+}
+/*
+for(var key in tree){
+	//alert(tree[key]);
+	//alert(!tree[key].children);
+	if(tree[key].children){
+		var children = tree[key].children;
+		for(var keyc in children){
+			if(children[keyc]=="b1_1")
+			{
+				//alert(children[keyc]);
+			}
+			
+		}	
+	}
+	//alert(tree[key].name);
+	
+}
+*/
+/*
+//[控制层]
+var Tree_m = function ( module ){
+
+
+    function createTree( obj ) {
+        var root, count = 0;
+		root = document.createElement("ul");
+            //创建文档碎片节点
+		var docfrag = document.createDocumentFragment();
+			
+        for(var key in obj){
+            if(obj[key] == "id" || !obj[key].children) continue;
+			var children_k = obj[key].children;
+			for(var keyc in children_k){
+				//alert(children_k[keyc]);
+				var c = document.createElement("li"),
+					span = document.createElement("span");
+				span.appendChild(document.createTextNode( children_k[keyc]));
+				c.appendChild(span);
+				docfrag.appendChild( c );
+				root.appendChild( docfrag );
+				//root.children[count].appendChild( children_k[keyc] );
+			}
+            //count来判断插入的位置
+            count++;
+        }
+		for(var i = 0 ;i<count;i++)
+		{
+			//返回指定节点 之后紧跟节点，在相同的树层级中
+			//.nextSibling
+			var obj = root.childNodes[i].nextSibling.innerHTML;
+			//alert(obj);
+		}
+		
+        return root;
+    }
+
+    var T = createTree(module);
+	return T;
+}
+*/
+
+</script>
+
+</body>
+</html>

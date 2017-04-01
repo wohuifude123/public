@@ -1,0 +1,256 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>表格</title>
+<script type="text/javascript" src="js/public.js"></script>
+<style>
+*{
+	margin: 0px;
+	padding: 0px;
+}
+</style>
+</head>
+
+<body>
+<table width="1000" border="1" style="margin:0 auto;">
+
+  <tr>
+    <td></td> 
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+  	<td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+  	<td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+  	<td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+</table>
+
+<div id="cs001"></div>
+
+<script type="text/javascript">
+var jsonList=
+[
+	//第一行
+	{
+		"src":"img/cs001.jpg",
+		"person":{"name": "秦芙蓉>>","homepage": "https://www.baidu.com/"},
+		"skill":"专长：烹虾，红烧肉，荤素菜，各种杂粮饭"
+	},
+	{
+		"src":"img/cs002.jpg",
+		"person":{"name": "平东艳>","homepage": "https://www.baidu.com/"},
+		"skill":"专长：高级育婴师、月嫂、高级膳食营养师"
+	},
+	{
+		"src":"img/cs001.jpg",
+		"person":{"name": "秦芙蓉>>","homepage": "https://www.baidu.com/"},
+		"skill":"专长：烹虾，红烧肉，荤素菜，各种杂粮饭"
+	},
+	{
+		"src":"img/cs002.jpg",
+		"person":{"name": "平东艳>","homepage": "https://www.baidu.com/"},
+		"skill":"专长：高级育婴师、月嫂、高级膳食营养师"
+	},
+	
+	//第二行
+	{
+		"src":"img/cs001.jpg",
+		"person":{"name": "秦芙蓉>>","homepage": "https://www.baidu.com/"},
+		"skill":"专长：烹虾，红烧肉，荤素菜，各种杂粮饭"
+	},
+	{
+		"src":"img/cs002.jpg",
+		"person":{"name": "平东艳>","homepage": "https://www.baidu.com/"},
+		"skill":"专长：高级育婴师、月嫂、高级膳食营养师"
+	},
+	{
+		"src":"img/cs001.jpg",
+		"person":{"name": "平东艳>","homepage": "https://www.baidu.com/"},
+		"skill":"专长：高级育婴师、月嫂、高级膳食营养师"
+	},
+	{
+		"src":"img/cs002.jpg",
+		"person":{"name": "平东艳>","homepage": "https://www.baidu.com/"},
+		"skill":"专长：高级育婴师、月嫂、高级膳食营养师"
+	},
+	
+	//第三行
+	{
+		"src":"img/cs001.jpg",
+		"person":{"name": "秦芙蓉>>","homepage": "https://www.baidu.com/"},
+		"skill":"专长：烹虾，红烧肉，荤素菜，各种杂粮饭"
+	},
+	{
+		"src":"img/cs002.jpg",
+		"person":{"name": "平东艳>","homepage": "https://www.baidu.com/"},
+		"skill":"专长：高级育婴师、月嫂、高级膳食营养师"
+	},
+	{
+		"src":"img/cs001.jpg",
+		"person":{"name": "平东艳>","homepage": "https://www.baidu.com/"},
+		"skill":"专长：高级育婴师、月嫂、高级膳食营养师"
+	},
+	{
+		"src":"img/cs002.jpg",
+		"person":{"name": "平东艳>","homepage": "https://www.baidu.com/"},
+		"skill":"专长：高级育婴师、月嫂、高级膳食营养师"
+	},
+	
+	//第四行
+	{
+		"src":"img/cs001.jpg",
+		"person":{"name": "秦芙蓉>>","homepage": "https://www.baidu.com/"},
+		"skill":"专长：烹虾，红烧肉，荤素菜，各种杂粮饭"
+	},
+	{
+		"src":"img/cs002.jpg",
+		"person":{"name": "平东艳>","homepage": "https://www.baidu.com/"},
+		"skill":"专长：高级育婴师、月嫂、高级膳食营养师"
+	},
+	{
+		"src":"img/cs001.jpg",
+		"person":{"name": "平东艳>","homepage": "https://www.baidu.com/"},
+		"skill":"专长：高级育婴师、月嫂、高级膳食营养师"
+	},
+	{
+		"src":"img/cs002.jpg",
+		"person":{"name": "平东艳>","homepage": "https://www.baidu.com/"},
+		"skill":"专长：高级育婴师、月嫂、高级膳食营养师"
+	},
+	
+	
+	//第五行
+	{
+		"src":"img/cs001.jpg",
+		"person":{"name": "秦芙蓉>>","homepage": "https://www.baidu.com/"},
+		"skill":"专长：烹虾，红烧肉，荤素菜，各种杂粮饭"
+	},
+	{
+		"src":"img/cs002.jpg",
+		"person":{"name": "平东艳>","homepage": "https://www.baidu.com/"},
+		"skill":"专长：高级育婴师、月嫂、高级膳食营养师"
+	},
+	{
+		"src":"img/cs001.jpg",
+		"person":{"name": "平东艳>","homepage": "https://www.baidu.com/"},
+		"skill":"专长：高级育婴师、月嫂、高级膳食营养师"
+	},
+	{
+		"src":"img/cs002.jpg",
+		"person":{"name": "平东艳>","homepage": "https://www.baidu.com/"},
+		"skill":"专长：高级育婴师、月嫂、高级膳食营养师"
+	}
+	
+]
+
+
+var tr_num=0;;
+if(jsonList.length%6==0)
+{
+	tr_num = jsonList.length/6
+}
+else
+{
+	tr_num = Math.ceil(jsonList.length/6);
+}
+//alert(tr_num);
+var td_001=document.getElementsByTagName("td");
+var td_index = 0;
+for (var key in jsonList)
+{
+	//alert("td_index=="+td_index);
+	var tr_c=document.createElement("tr");
+	var ul_c=document.createElement("ul");
+	ul_c.style.marginLeft="auto";
+	ul_c.style.marginRight="auto";
+	ul_c.style.listStyle="none";
+	for (var key_img in jsonList[key])
+	{
+		var li_c=document.createElement("li");
+		switch(key_img)
+		{
+			case "src":
+				//alert("src=="+jsonList[key][key_img]);
+				var img_c = document.createElement("img");
+				img_c.style.width="250px";
+				img_c.style.height="250px";
+				img_c.src=jsonList[key][key_img];
+				li_c.appendChild(img_c);
+			break;
+			case "person":
+
+				//alert("name=="+jsonList[key][key_img]);
+				var a_c = document.createElement("a");
+				a_c.setAttribute("target","_blank");
+				for(key_person in jsonList[key][key_img])
+				{
+					switch(key_person)
+					{
+						case "name":
+							a_c.innerHTML=jsonList[key][key_img][key_person];
+						break;
+						case "homepage":
+							a_c.setAttribute("href",jsonList[key][key_img][key_person])
+						break;
+					}
+					//alert(jsonList[key][key_img][key_person]);
+				}
+				li_c.appendChild(a_c);
+			break;
+			case "skill":
+				//alert("skill=="+jsonList[key][key_img]);
+				li_c.innerHTML=jsonList[key][key_img];
+			break;
+
+			default:
+		}
+		ul_c.appendChild(li_c);
+
+	}
+	td_001[td_index].appendChild(ul_c);
+	td_index++;
+}
+
+function addElementImg(obj) {
+　　　　var div = document.getElementById(obj);
+
+　　　　//添加 img
+　　　　var img = document.createElement("img");
+
+　　　　//设置 img 属性，如 id
+　　　　img.setAttribute("id", "newImg");
+
+　　　　//设置 img 图片地址
+　　　　img.src = "img/cs001.jpg";
+
+
+　　　　div.appendChild(img);
+　　}
+
+//addElementImg("cs001");
+
+</script>
+</body>
+</html>

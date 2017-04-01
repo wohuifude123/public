@@ -1,0 +1,70 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+</head>
+
+<body>
+
+<script type="text/javascript">
+
+function SetCookie(name, value, expires, path, domain, secure)
+{
+	var today = new Date();
+	today.setTime(today.getTime());
+	if(expires)
+	{
+		expires *= 86400000;
+	}
+	var expires_date = new Date(today.getTime() + (expires));
+	document.cookie = name + "=" + escape(value)
+		+ (expires ? ";expires=" + expires_date.toGMTString() : "")
+		+ (path ? ";path=" + path : "")
+		+ (domain ? ";domain=" + domain : "")
+		+ (secure ? ";secure" : "");
+}
+
+
+function setCookie(c_name,value,expiredays)
+{
+	var exdate=new Date();
+	//定义和用法
+	//	escape() 函数可对字符串进行编码，这样就可以在所有的计算机上读取该字符串。
+	//提示：可以使用 unescape() 对 escape() 编码的字符串进行解码。
+	exdate.setDate(exdate.getDate()+expiredays)
+	document.cookie=c_name+ "=" +escape(value)+
+		((expiredays==null) ? "" : ";expires="+exdate.toGMTString());
+	alert("设置成功");
+	alert(document.cookie.length);
+}
+
+function getCookie(c_name)
+{
+	alert("读取111");
+	alert(document.cookie.length);
+	if (document.cookie.length>0)
+	{
+		c_start=document.cookie.indexOf(c_name + "=")
+		if (c_start!=-1)
+		{
+			alert("读取");
+			c_start=c_start + c_name.length+1;
+			c_end=document.cookie.indexOf(";",c_start);
+			if (c_end==-1) c_end=document.cookie.length;
+			var u = unescape(document.cookie.substring(c_start,c_end));
+			alert(u);
+			return u;
+		} 
+  }
+return ""
+}
+
+
+</script>
+
+<input name="" type="button" onclick="setCookie('user','aa',3600)" value="设置"/>
+<input name="" type="button" onclick="getCookie('user')" value="读取"/>
+
+</body>
+</html>

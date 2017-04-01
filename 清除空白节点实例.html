@@ -1,0 +1,108 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+</head>
+
+<body>
+
+<div id="div1">
+<ul>
+<li>111<em class="f">&#xe64c;</em><a class="lma" >好用品123</a>
+         
+        <div class="lra" style="display:none;">
+        32131231
+        </div>
+</li>
+<li>222<em class="f">&#xe64c;</em><a class="lma" href="/man/">好用品321</a>
+         
+        <div class="lra" style="display:none;">
+        32131231
+        </div>
+</li>
+<li>333</li>
+<li>444</li>
+<li>555</li>
+<li>666</li>
+<li>777</li>
+</ul>
+</div>
+
+<script type="text/javascript">
+//清除第一个的li空白节点
+
+var div=document.getElementById('div1');
+alert(div.childNodes.length);
+var divli=document.getElementById('div1').getElementsByTagName("li");
+alert(divli.length);
+alert(divli.item(0).childNodes.length);
+alert(divli.item(0).innerHTML)
+alert(divli.item(0).getElementsByTagName("a")[0].innerHTML);
+alert(divli.item(0).getElementsByTagName("a")[0].nextSibling);
+alert(divli.item(0).getElementsByTagName("a")[0].nextSibling.innerHTML);
+alert(divli.item(0).getElementsByTagName("a")[0].nextSibling.nodeValue);
+var ul=div.childNodes.item(0);
+var lis=ul.childNodes;
+alert(lis.length);
+for(var i=0;i<lis.length;i++){
+	alert("Item "+i+": "+lis.item(i).innerHTML);
+}
+
+function del_ff(elem)
+{
+	alert("清除空白节点开始");
+    var elem_child = elem.childNodes;
+    alert(elem_child.length);
+    for(var i=elem_child.length-1;i > 0;i-- )
+    {
+		//alert(i);
+        //alert(elem_child[i].nodeName);
+        //alert(elem_child[i].nodeType);
+        //alert(elem_child[i].nodeValue);
+        //alert(elem_child[i].innerHTML);
+        // \s 元字符用于查找空白字符
+        if(elem_child[i].nodeName == "#text" && !/\s/.test(elem_child.nodeValue))
+        {elem.removeChild(elem_child[i])}
+    }
+}
+del_ff(divli.item(0));
+alert(divli.item(0).innerHTML);
+alert(divli.item(0).childNodes.length);
+
+//清除全部空白节点
+/*
+var div1=document.getElementById('div1');
+
+alert(div1.childNodes.length);
+alert(div1.childNodes[0].nodeName);
+alert(div1.childNodes[0].nodeValue);
+function del_ff(elem)
+{
+	alert("清除空白节点开始");
+    var elem_child = elem.childNodes;
+    alert("长度=="+elem_child.length);
+    for(var i=elem_child.length-1;i >= 0;i-- )
+    {
+		//alert(i);
+        //alert(elem_child[i].nodeName);
+       // alert(elem_child[i].nodeType);
+        //alert(elem_child[i].nodeValue);
+        //alert(elem_child[i].innerHTML);
+        // \s 元字符用于查找空白字符
+        if(elem_child[i].nodeName == "#text" && !/\s/.test(elem_child.nodeValue))
+        {elem.removeChild(elem_child[i])}
+    }
+}
+del_ff(div1);
+alert("剩余长度"+div1.childNodes.length);
+var ul = div1.getElementsByTagName("ul")[0];
+alert(ul.childNodes.length);
+alert(ul.innerHTML);
+del_ff(ul);
+alert(ul.childNodes.length);
+alert(ul.innerHTML);
+*/
+</script>
+</body>
+</html>

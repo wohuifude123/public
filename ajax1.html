@@ -1,0 +1,145 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<script type="text/javascript" src="js/public.js"></script>
+</head>
+
+<body>
+
+<div onmouseover="changeColor1()" style="width:100px; height:100px;  float:left;background-color:#9F0">红色</div>
+<div onmouseover="changeColor2()" style="width:100px; height:100px; float:left; margin-left:30px; background-color:#C0F">蓝色</div>
+<div id="color" style="width:200px; height:200px; background-color:#FC6; clear:both">变换颜色开始</div>
+——————————————————————————————————————————————————————————————————————————————————————————
+
+<div><a href="javascript:void(0)" onclick="pay()">购物</a></div>
+<div><a href="javascript:void(0)" onclick="change()">结账</a></div>
+——————————————————————————————————————————————————————————————————————————————————————————
+<div id='img01'>测试</div>
+
+
+
+<script type="text/javascript">
+	
+/*
+var  $= {};//空对象
+  
+$.ajax=function(a){
+
+	//alert(a.type);
+	//alert(a.data.val1);
+	//alert(a.data.val2);
+	var url=a.url;
+	var type=a.type;
+	xmlHttp=GetXmlHttpObject();
+	if (xmlHttp==null)
+	{
+		alert ("Browser does not support HTTP Request");
+		return
+	}
+	a.success("成功");
+	xmlHttp.onreadystatechange=stateChanged;
+	xmlHttp.open(type,url,true);
+	xmlHttp.send(null)
+}
+
+
+
+function GetXmlHttpObject()
+{
+	var xmlHttp=null;
+	try
+	{
+		// Firefox, Opera 8.0+, Safari
+		xmlHttp=new XMLHttpRequest();
+	}
+	catch (e)
+	{
+		// Internet Explorer
+		try
+		{
+			xmlHttp=new ActiveXObject("Msxml2.XMLHTTP");
+		}
+		catch (e)
+		{
+			xmlHttp=new ActiveXObject("Microsoft.XMLHTTP");
+		}
+	}
+	return xmlHttp;
+}
+
+
+
+function stateChanged() 
+{ 
+	if (xmlHttp.readyState==4 || xmlHttp.readyState=="complete")
+	{
+		document.getElementById("img01").innerHTML=xmlHttp.responseText;
+	} 
+}
+*/
+//点击购物变化
+function pay()
+{
+	/*
+	$.ajax({
+		//url:'php/aja.php',
+		url:'cs001.php',
+		type:"POST", 
+		data:{val1:"abc","val2":123,"val3":"456"},
+		success:function(msg){  
+		   // alert(msg);
+		}
+	});
+	*/
+	
+	/*
+	$_a.ajax_L({
+		//url:'php/aja.php',
+		url:'cs001.php',
+		type:"POST", 
+		data:{val1:"abc","val2":123,"val3":"456"},
+		success:function(msg){  
+		   // alert(msg);
+		}
+
+	});
+	*/
+	
+	  $_a.ajax_L({
+		  
+        url:'csa.php',           //请求地址
+        type: "POST",                       //请求方式
+        data: { name: "super", age: 20 },        //请求参数
+        dataType: "json",
+		success: function (response, xml) {
+            // 此处放成功后执行的代码
+			document.getElementById("img01").innerHTML=response;
+        },
+        fail: function (status) {
+            // 此处放失败后执行的代码
+        }
+    });
+}
+//点击结账变化
+function change()
+{
+	document.getElementById("img01").innerHTML="结账终于完事";
+}
+//颜色变化开始
+function changeColor1()
+{
+	//alert("changeColor1");
+	document.getElementById("color").style.backgroundColor="red";
+}
+function changeColor2()
+{
+	document.getElementById("color").style.backgroundColor="blue"
+}
+
+</script>
+
+
+</body>
+</html>

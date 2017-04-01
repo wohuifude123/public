@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<script type="text/javascript" src="js/public.js"></script>
+</head>
+
+<body>
+
+<script type="text/javascript">
+
+var str001 = {"name": "apple", "sex": "21"};
+
+
+// 修改属性 name 的值为 banana  
+alert(str001["name"]);
+createJson(str001,"name", "banana");
+alert(str001["name"]);
+
+
+// 添加属性 color 的值为 red  
+alert("颜色=="+str001["color"]);
+createJson(str001,"color", "red");
+alert("颜色=="+str001["color"]);
+
+// 删除属性 sex  
+alert("性别=="+str001["sex"]);
+createJson(str001,"sex");  
+alert("性别=="+str001["sex"]);
+
+/*
+// 参数：prop = 属性，val = 值
+function createJson(str,prop, val) {  
+    // 如果 val 被忽略  
+    if(typeof val === "undefined") {  
+        // 删除属性  
+        delete str[prop];  
+    }  
+    else {  
+        // 添加 或 修改  
+        str[prop] = val;  
+    }  
+}
+*/
+
+</script>
+</body>
+</html>

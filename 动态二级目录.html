@@ -1,0 +1,116 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>动态二级目录</title>
+<script type="text/javascript" src="js/public.js"></script>
+<style>
+*{  
+    margin:0px;  
+    padding:0px;  
+}
+
+#entirety{
+	width:1500px;
+	background-color:#0F0;
+	margin:0 auto;
+}
+
+#ca{
+	list-style:none;
+}
+
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div id="entirety">
+
+    <div id="top">
+    
+    </div>
+
+    <div id="left">
+    
+    <ul id="ca">
+    <li class="cc">111</li>
+    <li class="cc">222</li>
+    <li class="cc">333</li>
+    <li class="cc">444</li>
+    <li class="cc">555</li>
+    <li class="cc">666</li>
+    <li class="cc">777</li>
+    <li class="cc">888</li>
+    </ul>
+    
+    </div>
+
+    <div id="right">
+    
+    </div>
+
+</div>
+
+<script type="text/javascript">
+
+
+cleanWhiteSpace(document.getElementById("ca"))
+
+//数据层
+var tree = {
+			"a0": {
+                "id": 0,
+                "name": "a0",
+                "children": {
+                    "b1": {
+						"cname":"b0_1",
+						"href":"https://www.baidu.com/"
+					},
+                    "b2":  {
+						"cname":"b0_2",
+						"href":"https://www.youku.com/"
+					},
+                    "b3": "b0_3"
+                }
+            },
+            "a1": {
+                "id": 1,
+                "name": "a1",
+                "children": {
+                    "b1": "b1_1",
+                    "b2": "b1_2",
+                    "b3": "b1_3"
+                }   
+            },
+            "a2": {
+                "id": 2,
+                "name": "a2",
+                "children": {}
+            },
+            "a3": {
+                "id": 3,
+                "name": "a3",
+                "children": {
+                    "b1": "b3_1",
+                    "b2": "b3_2",
+                    "b3": "b3_3"
+                }
+            }
+        };
+//视图层
+create("cc",tree);
+
+
+
+</script>
+
+
+
+</body>
+</html>

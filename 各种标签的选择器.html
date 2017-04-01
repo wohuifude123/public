@@ -1,0 +1,133 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script type="text/javascript" src="js/public.js"></script>
+<title>无标题文档</title>
+</head>
+
+<body>
+
+<div CLASS="content"></div>
+<div CLASS="content"></div>
+<div CLASS="content"></div>
+<div CLASS="content"></div>
+<div CLASS="content"></div>
+<div id="content"></div>
+ 
+<span></span>
+ 
+<span></span>
+<span></span>
+
+
+<script>
+ 
+function $(context) {
+
+
+    return new selector(context);
+}
+ 
+function selector(dom) {
+    var _this = this;
+    var prefix = dom.charAt(0);
+	/*
+	定义和用法
+charAt() 方法可返回指定位置的字符。
+请注意，JavaScript 并没有一种有别于字符串类型的字符数据类型，所以返回的字符是长度为 1 的字符串。
+	*/
+    switch (prefix) {
+      case ".":
+        dom = document.getElementsByClassName(dom.slice(1));
+		/*
+		定义和用法
+slice() 方法可从已有的数组中返回选定的元素。
+语法
+arrayObject.slice(start,end)
+		*/
+        break;
+ 
+      case "#":
+        dom = document.getElementById(dom.slice(1));
+        ;
+        break;
+ 
+      default:
+        dom = document.getElementsByTagName(dom);
+        ;
+        break;
+    }
+    _this.domArr = [];
+    if (dom.constructor == NodeList) {
+        for (var i = 0; i < dom.length; i++) {
+            _this.domArr.push(dom.item(i));
+			/*
+			定义和用法
+				item() 方法可返回节点列表中处于指定索引号的节点。
+			*/
+        }
+    } else if (dom.constructor == HTMLDivElement) {
+		/*
+		定义和用法
+constructor 属性返回对创建此对象的数组函数的引用。
+
+在本例中，我们将展示如何使用 constructor 属性：
+<script type="text/javascript">
+
+function employee(name,job,born)
+{
+this.name=name;
+this.job=job;
+this.born=born;
+}
+
+var bill=new employee("Bill Gates","Engineer",1985);
+
+document.write(bill.constructor);
+
+</script>
+输出：
+function employee(name, jobtitle, born)
+{this.name = name; this.jobtitle = job; this.born = born;}
+
+
+
+		*/
+        _this.domArr.push(dom);
+    } else {
+        return false;
+    }
+    _this.css = function(name, val) {
+        var styleObj = {};
+        if (typeof name == "object") {
+            for (var i in name) {
+                styleObj[i] = name[i];
+            }
+        } else {
+            styleObj[name] = val;
+        }
+        for (var name in styleObj) {
+            for (var i = 0; i < _this.domArr.length; i++) {
+                _this.domArr[i].style[name] = styleObj[name];
+            }
+        }
+        return _this;
+    };
+    return _this;
+}
+ 
+$("#content").css("width", "1190px");
+ 
+$(".content").css("width", "1000px");
+ 
+$("span").css({
+    width:"50px",
+    height:"100px",
+    display:"block",
+    "background-color":"#CCC",
+    "margin-top":"20px"
+});
+</script>
+</body>
+</html>

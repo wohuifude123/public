@@ -1,0 +1,188 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>动态二级目录</title>
+<script type="text/javascript" src="js/public.js"></script>
+<style>
+*{  
+    margin:0px;  
+    padding:0px;  
+}
+
+#entirety{
+	width:1200px;
+	background-color:#0F0;
+	margin:0 auto;
+}
+
+#ca{
+	list-style:none;
+}
+
+#top{
+	background-color:#33F;
+	width:1200px;
+	height:160px;
+}
+
+#content{
+	background-color:#363;
+	width:1200px;
+	height:500px;
+}
+
+#left{
+	background-color:#096;
+	width:200px;
+	height:500px;
+	float:left;
+}
+#right{
+	background-color:#0CF;
+	width:1000px;
+	height:500px;
+	float:left;
+}
+
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div id="entirety">
+
+    <div id="top">
+    <img src="img/new banner.jpg" width="1200" height="160" /> </div>
+    
+    <div id="content">
+
+        <div id="left">
+        
+        <ul id="ca">
+        <li class="cc">111</li>
+        <li class="cc">222</li>
+        <li class="cc">333</li>
+        <li class="cc">444</li>
+        <li class="cc">555</li>
+        <li class="cc">666</li>
+        <li class="cc">777</li>
+        <li class="cc" id="hello">888</li>
+        </ul>
+        </div>
+
+        <div id="right">
+        aaaaa
+        </div>
+    
+    </div>
+
+</div>
+
+<script type="text/javascript">
+
+
+cleanWhiteSpace(document.getElementById("ca"))
+
+//数据层
+var tree = {
+			"a0": {
+                "id": 0,
+                "name": "a0",
+                "children": {
+                    "b1": {
+						"cname":"b0_1",
+						"href":"https://www.baidu.com/"
+					},
+                    "b2":  {
+						"cname":"b0_2",
+						"href":"https://www.youku.com/"
+					},
+                    "b3": "b0_3"
+                }
+            },
+            "a1": {
+                "id": 1,
+                "name": "a1",
+                "children": {
+                    "b1": "b1_1",
+                    "b2": "b1_2",
+                    "b3": "b1_3"
+                }   
+            },
+            "a2": {
+                "id": 2,
+                "name": "a2",
+                "children": {}
+            },
+            "a3": {
+                "id": 3,
+                "name": "a3",
+                "children": {
+                    "b1": "b3_1",
+                    "b2": "b3_2",
+                    "b3": "b3_3"
+                }
+            },
+			"a6": {
+                "id": 6,
+                "name": "a6",
+                "children": {
+                    "b1": "b6_1",
+                    "b2": "b6_2",
+                    "b3": "b6_3"
+                }
+            },
+			 "a7": {
+                "id": 7,
+                "name": "a7",
+                "children": {
+                    "b1": "b7_1",
+                    "b2": "b7_2",
+                    "b3": "b7_3"
+                }
+            }
+        };
+//视图层
+create("cc",tree);
+
+
+function pay()
+{
+	
+	  $_a.ajax_L({
+		  
+        url:'csa.php',           //请求地址
+        type: "POST",                       //请求方式
+        data: { name: "super", age: 20 },        //请求参数
+        dataType: "json",
+		success: function (response, xml) {
+            // 此处放成功后执行的代码
+			document.getElementById("right").innerHTML=response;
+        },
+        fail: function (status) {
+            // 此处放失败后执行的代码
+        }
+    });
+}
+
+function det(){
+	document.getElementById("hello").onclick = pay;
+}
+det();
+function a()
+{
+	alert("a1a");
+}
+
+</script>
+
+
+
+</body>
+</html>

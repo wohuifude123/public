@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<script type="text/javascript" src="js/public.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<script type="application/javascript">
+   var count = 10;
+   var sh;
+   function counter(){
+		 sh = setInterval(jishi,100);
+	}
+
+      
+
+        window.onload = counter;
+</script>
+
+</head>
+
+<body>
+ <button id="btn" disabled="disabled">倒计时10秒</button>
+    <span id="result"></span>
+    
+    <script type="text/javascript">
+	  function jishi(){
+            var btn = document.getElementById("btn");
+            btn.innerHTML = "倒计时"+(--count)+"秒";
+            if(count == 0){
+                btn.disabled = false;
+                btn.innerHTML = "开始点击";
+                clearInterval(sh);
+				$L("#btn").click_L(function(){
+                    var result = document.getElementById("result");
+                    setInterval(function(){
+                        //执行点击操作
+                        result.innerHTML = "您点击了："+(count++)+"次";
+                    },100);
+				})
+                btn.click();
+            }
+        }
+	</script>
+</body>
+</html>

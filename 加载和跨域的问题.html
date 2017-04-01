@@ -1,0 +1,261 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<script type="text/javascript" src="js/public.js"></script>
+<script type="text/javascript">
+/*
+document.ready = function (callback)
+{
+	//兼容FF,Google
+	if(document.addEventListener)
+	{
+		document.addEventListener
+		(
+			'DOMContentLoaded',
+			function()
+			{
+				document.removeEventListener('DOMContentLoaded', arguments.callee, false);
+				callback();
+			}, 
+			false
+		)
+	}
+	//兼容IE
+	else if(document.attachEvent)
+	{
+		document.attachEvent
+		(
+			'onreadystatechange',
+			function()
+			{
+				if (document.readyState == "complete")
+				{
+					document.detachEvent("onreadystatechange", arguments.callee);
+					callback();
+				}
+			}
+		)
+	}
+	else if (document.lastChild == document.body)
+	{
+		callback();
+	}
+}
+*/
+	
+/*
+	定义和用法
+		addEventListener() 方法用于向指定元素添加事件句柄。
+		提示：使用 removeEventListener() 方法来移除 addEventListener() 方法添加的事件句柄。
+	
+	例子
+		<button id="myBtn">点我</button>
+		<p id="demo"></p>
+		
+		document.getElementById("myBtn").addEventListener("click", function()
+		{
+			document.getElementById("demo").innerHTML = "Hello World";
+		});
+		
+*/
+</script>
+
+
+
+
+<script type="text/javascript">
+
+
+
+
+
+function jsonpCallback(result){
+	//alert(result);
+	for(var i in result)
+	{
+		alert(i+":"+result[i]);
+	}  
+}  
+//var JSONP=document.createElement("script");
+//	JSONP.type="text/javascript";  
+//	JSONP.src="http://localhost:9096/dao/ajax/domain/services.php?callback=jsonpCallback";  
+
+//document.getElementsByTagName("head")[0].appendChild(JSONP);
+
+</script>
+
+
+
+</head>
+
+
+<body>
+
+
+<button id="myBtn">点我</button>
+<p id="demo"></p>
+<script>
+
+</script>
+
+
+
+<script type="text/javascript">
+
+
+document.ready(function(){
+	document.getElementById("myBtn").addEventListener("click", function()
+	{
+		document.getElementById("demo").innerHTML = "Hello World";
+	});
+});
+</script>
+
+
+
+
+<script type="text/javascript">
+
+$_a={};
+//函数类型判断
+//jQuery 1.2
+var isFunction = function(fn){
+	return !!fn && //排除了false，空字符串，0，NaN，undefined
+	typeof fn != "string" && //排除了字符串
+			!fn.nodeName && //排除DOM对象
+			fn.constructor != Array && //排除数组对象
+			/^[\s[]?function/.test(fn + ""); //若前面的规则都没生效，那么检测该变量toString后的内容，如果以"function"字符串开头，那么可断定为函数
+};
+
+// jsonp 格式化参数
+function jsonParams(data){
+	var arr = [];
+	for (var name in data) {
+		switch(name)
+		{
+			case "url":
+				//arr.push(encodeURIComponent(data[name]));
+				arr.push(data[name]);
+			break;
+			case "jsonpCallback":
+				//arr.push(encodeURIComponent(data[name]));
+				arr.push("callback="+data[name]);
+			break;
+			default:
+			
+		}
+	}
+	arr.push(("v=" + Math.random()).replace(".",""));
+	/*
+		定义和用法
+			push() 方法可向数组的末尾添加一个或多个元素，并返回新的长度。
+		提示和注释
+			注释：该方法会改变数组的长度。
+			提示：要想数组的开头添加一个或多个元素，请使用 unshift() 方法。
+	*/
+	var a1 = arr.join("&");
+	//alert(a1);
+	return a1;
+	/*
+		定义和用法
+			join() 方法用于把数组中的所有元素放入一个字符串。
+			元素是通过指定的分隔符进行分隔的。
+	*/
+}
+
+//操作JSON总结
+function createJson(str,prop,val) {  
+    // 如果 val 被忽略  
+    if(typeof val === "undefined") {  
+        // 删除属性  
+        delete str[prop];  
+    }  
+    else {  
+        // 添加 或 修改  
+        str[prop] = val;  
+    }
+	
+}
+
+
+
+//function jsonhandle(result){$_a.successName(result);}
+
+//z("abc","x,y","return x+y");
+//alert(abc(1,2))
+function customFun(funname,parameters,fbody)
+{
+	window[funname] = new Function(parameters,fbody);
+}
+
+//网络地址截取
+function substringByStop(str,stopStr)
+{
+	str = str.substring(0,str.indexOf(stopStr));
+	//alert(str);
+	return str;
+}
+
+$_a.jsonp= function(options){
+	//alert(options.url);
+	callbackName = options.jsonpCallback = isFunction( options.jsonpCallback ) ? options.jsonpCallback() : options.jsonpCallback;
+	var strJson= {};
+	for(var key in options){
+		//alert(key+"=="+options[key]);
+		createJson(strJson,key,options[key]);
+	}
+	
+	customFun(options.jsonpCallback,"result","$_a.successName(result);");
+	var script=document.getElementsByTagName("script");
+	
+	var JSONP=document.createElement("script");
+		JSONP.type="text/javascript";
+		//alert(substringByStop(jsonParams(strJson),"&v="));
+		//alert(typeof(substringByStop(jsonParams(strJson),"&v=")));
+		JSONP.src = substringByStop(jsonParams(strJson),"&v=");
+		//JSONP.src="http://localhost:9096/dao/ajax/domain/services.php?code=CA1998&callback=jsonhandle";
+	
+	(function(){document.getElementsByTagName("head")[0].appendChild(JSONP);})();
+	//返回数据函数
+	this.successName=function(result_01)
+    {
+		//result_01=null;
+		if(result_01)
+		{
+			options.success(result_01);
+		}
+		else
+		{
+			options.error();
+		}
+		
+        
+    };
+}
+
+
+$_a.jsonp({
+			type: "get",
+			async: false,
+			url: "http://localhost:9096/dao/ajax/domain/services.php?code=CA1998",
+			dataType: "jsonp",
+			//传递给请求处理程序或页面的，用以获得jsonp回调函数名的参数名（一般默认为:callback）
+			jsonp: "callback",
+			jsonpCallback:"jsonhandle",//自定义的jsonp回调函数名称，默认为jQuery自动生成的随机函数名，也可以写"?"，jQuery会自动为你处理数据
+			success: function(json){
+				alert("成功");
+				for(var i in json)
+				{
+					alert(i+":"+json[i]);
+				}
+
+			},
+			error: function(){
+				alert('fail');
+			}
+		});
+</script>
+</body>
+</html>

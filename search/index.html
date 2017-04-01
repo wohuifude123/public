@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<script type="text/javascript" src="js/global.js"></script>
+<script type="text/javascript" src="../js/public.js"></script>
+<style>
+*{
+	margin:0;
+	padding:0;
+}
+
+
+</style>
+</head>
+
+<body>
+
+<div id="dd">
+
+<form method="post" action="search.php" name="search">
+    <input name="key" type="text" value="" size="35" />
+    <input type="submit" value="Search" />
+</form>
+
+</div>
+
+<div id="img01"></div>
+
+
+<script>
+$_a.ajax_L({
+	url:'JSON.php',              //请求地址
+	type: "POST",                       //请求方式
+	data: { name: "super", age: 20 },        //请求参数
+	dataType: "json",
+	success: function (response, xml) {
+		// 此处放成功后执行的代码
+		document.getElementById("img01").innerHTML=response;
+	},
+	fail: function (status) {
+		// 此处放失败后执行的代码
+	}
+});
+	
+</script>
+</body>
+</html>
